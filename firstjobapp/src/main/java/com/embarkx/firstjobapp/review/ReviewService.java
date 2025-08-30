@@ -2,6 +2,9 @@ package com.embarkx.firstjobapp.review;
 
 import org.springframework.stereotype.Service;
 
-@Service
+import java.util.List;
+
+
 public interface ReviewService {
+    List<Review> getAllReviews(Long companyId);
 }

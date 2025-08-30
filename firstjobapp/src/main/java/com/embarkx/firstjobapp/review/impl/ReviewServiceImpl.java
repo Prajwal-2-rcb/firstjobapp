@@ -1,4 +1,25 @@
 package com.embarkx.firstjobapp.review.impl;
 
-public class ReviewServiceImpl {
+import com.embarkx.firstjobapp.review.Review;
+import com.embarkx.firstjobapp.review.ReviewRepository;
+import com.embarkx.firstjobapp.review.ReviewService;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class ReviewServiceImpl implements ReviewService {
+
+    private ReviewRepository reviewRepository;
+    public ReviewServiceImpl(ReviewRepository reviewRepository)
+    {
+        this.reviewRepository=reviewRepository;
+    }
+
+    @Override
+    public List<Review> getAllReviews(Long CompanyId) {
+        List<Review> reviews=reviewRepository.findByCompanyId((CompanyId));
+        return reviews;
+    }
+
 }

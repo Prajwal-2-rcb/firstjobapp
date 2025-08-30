@@ -1,8 +1,8 @@
 package com.embarkx.firstjobapp.review;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import com.embarkx.firstjobapp.company.Company;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 
 @Entity
 public class Review {
@@ -12,6 +12,20 @@ public class Review {
     private String title;
     private String description;
     private double rating;
+
+
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name="company_id")
+    private Company company;
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
 
     public Review(Long id, String title, String description, double rating) {
         this.id = id;
