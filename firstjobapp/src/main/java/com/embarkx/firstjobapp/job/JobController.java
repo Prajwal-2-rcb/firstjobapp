@@ -29,9 +29,9 @@ public class JobController {
     public ResponseEntity<Job> findById(@PathVariable Long id) {
         Job job = jobService.getJobById(id);
         if (job != null) {
-            return ResponseEntity.ok(job);
+            return new ResponseEntity<>(job, HttpStatus.OK);
         } else {
-            return ResponseEntity.notFound().build();
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
